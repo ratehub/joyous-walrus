@@ -1,5 +1,5 @@
 import Express from 'express';
-import { index, create, update, destroy } from './controllers/todo.controller.js';
+import Api from './routes/api.js';
 
 export const app = Express();
 
@@ -10,7 +10,5 @@ export const app = Express();
 //       text/plain as JSON by default.
 app.use(Express.json({ type: ['application/json', 'text/plain'] }));
 
-app.get('/api', index);
-app.post('/api', create);
-app.put('/api/:id', update);
-app.delete('/api/:id', destroy);
+/* Register our API routes with Express */
+app.use('/api', Api);

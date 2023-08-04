@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { randomUUID } from 'crypto';
 import { app } from '../src/app.js';
-import { Todo } from '../src/todo.model.js';
+import { Todo } from '../src/models/todo.model.js';
 
 let mongo;
 

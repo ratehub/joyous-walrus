@@ -1,4 +1,4 @@
-import { Todo } from '../todo.model.js';
+import { Todo } from '../models/todo.model.js';
 
 /**
  * Get a listing of created Todo objects
