@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { app } from './app.js';
-import { DATABASE_CONNECTION_URI, SERVICE_PORT } from './config.js';
+import { app } from './bootstrap/app.js';
+import { DATABASE_CONNECTION_URI, SERVICE_PORT } from './configs/index.js';
 
 /* Start the Express server */
 app.listen(SERVICE_PORT, async () => {
