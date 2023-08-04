@@ -2,7 +2,8 @@
   "type": "module",
   "scripts": {
     "lint": "eslint src",
-    "serve": "docker-compose up -d && nodemon src/index.js",
+    "prepare": "cat .env.example > .env.local",
+    "serve": "docker-compose up -d && nodemon -r dotenv/config src/index.js dotenv_config_path=.env.local",
     "test": "jest --detectOpenHandles"
   },
   "dependencies": {
@@ -12,6 +13,7 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.22.5",
+    "dotenv": "^16.3.1",
     "eslint": "^8.46.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.28.0",
