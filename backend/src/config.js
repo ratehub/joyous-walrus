@@ -1,6 +1,9 @@
 /* Define the port that the web service should listen on */
 export const SERVICE_PORT = process.env.SERVICE_PORT || 3001;
 
+/** Define the API base path for handling requests */
+export const API_BASE_PATH = '/api';
+
 /* Define the database name */
 export const DATABASE_NAME = process.env.DATABASE_NAME || 'todo';
 

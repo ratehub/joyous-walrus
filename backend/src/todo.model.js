@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 
 const todoSchema = Schema({
     id: {
-        type: Schema.Types.UUID,
+        type: String,
         required: true
     },
     name: {

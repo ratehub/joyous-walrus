@@ -47,7 +47,8 @@ describe('GET /api', () => {
         expect(res.statusCode).toBe(200);
 
         /* Assert that we are getting our seed data back */
-        expect(res.body).toMatchObject(todoList);
+        // NOTE: the frontend in fetchAllItems() is expecting a result in res.json().body
+        expect(res.body.body).toMatchObject(todoList);
     });
 });
 
@@ -60,7 +61,7 @@ describe('POST /api', () => {
         expect(res.statusCode).toBe(201);
 
         /* Assert that the Location header is set with the new resource URI */
-        expect(res.headers['Location']).toBe(`/api/${data.id}`);
+        expect(res.headers['location']).toBe(`/api/${data.id}`);
 
         /* Assert that a new incomplete todo was created */
         const newTodo = await Todo.findOne(data);
@@ -95,7 +96,7 @@ describe('DELETE /api/:id', () => {
         expect(res.statusCode).toBe(204);
 
         /* Assert that we are getting nothing back */
-        expect(res.body).toBeUndefined();
+        expect(res.body).toMatchObject({});
     });
 });
 
