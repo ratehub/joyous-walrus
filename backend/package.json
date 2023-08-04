@@ -2,6 +2,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint *.js",
+    "serve": "docker-compose up -d && nodemon src/index.js"
   },
   "dependencies": {
     "express": "^4.18.2",
