@@ -1,5 +1,6 @@
 import Express from 'express';
-import Api from '../routes/api.js';
+import routes from '../routes/api.js';
+import errorHandler from '../middleware/errorHandler.js';
 
 export const app = Express();
 
@@ -11,4 +12,7 @@ export const app = Express();
 app.use(Express.json({ type: ['application/json', 'text/plain'] }));
 
 /* Register our API routes with Express */
-app.use('/api', Api);
+app.use('/api', routes);
+
+/* Handle errors in a consistent way */
+app.use(errorHandler);

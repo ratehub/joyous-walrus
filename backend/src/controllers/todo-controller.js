@@ -14,7 +14,7 @@ import {
  * @returns {Promise<void>}
  */
 export const index = async (req, res) => {
-    res.json({ body: await fetchTodos() });
+    res.send({ body: await fetchTodos() });
 };
 
 /**
@@ -34,25 +34,37 @@ export const create = async (req, res) => {
 /**
  * Update and existing Todo item and save it to the database
  *
- * @param {object} req
- * @param {object} res
+ * @param {object}   req
+ * @param {object}   res
+ * @param {Function} next
  *
  * @returns {Promise<void>}
  */
-export const update = async (req, res) => {
-    await updateTodo({ id: req.params.id }, req.body);
+export const update = async (req, res, next) => {
+    try {
+        await updateTodo({ id: req.params.id }, req.body);
+    } catch (e) {
+        return next(e);
+    }
+
     res.sendStatus(200);
 };
 
 /**
  * Delete a Todo item
  *
- * @param {object} req
- * @param {object} res
+ * @param {object}   req
+ * @param {object}   res
+ * @param {Function} next
  *
  * @returns {Promise<void>}
  */
-export const destroy = async (req, res) => {
-    await deleteTodo({ id: req.params.id });
+export const destroy = async (req, res, next) => {
+    try {
+        await deleteTodo({ id: req.params.id });
+    } catch (e) {
+        return next(e);
+    }
+
     res.sendStatus(204);
 };
