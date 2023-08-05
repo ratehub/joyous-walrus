@@ -3,7 +3,7 @@
   "scripts": {
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
-    "env:local": "cat .env.example > .env.local",
+    "env:local": "if [ ! -f .env.local ]; then cat .env.example > .env.local; fi",
     "build": "docker compose build --no-cache",
     "serve": "docker compose up",
     "test": "jest --detectOpenHandles",
