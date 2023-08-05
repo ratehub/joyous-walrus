@@ -6,8 +6,8 @@ npm run serve
 ```
 Docker Compose:
 ```bash
-docker-compose build --no-cache
-docker-compose up -d
+docker compose build --no-cache
+docker compose up -d
 ```
 
 ## Running in development
@@ -21,7 +21,7 @@ Manual:
 ```bash
 npm install
 cat .env.example > .env.local
-docker-compose -f docker-compose.dev.yml up -d
+docker compose -f docker-compose.dev.yml up -d
 nodemon -r dotenv/config src/index.js dotenv_config_path=.env.local
 ```
 ## Running tests
