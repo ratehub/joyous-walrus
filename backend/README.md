@@ -22,7 +22,7 @@ Manual:
 npm install
 cat .env.example > .env.local
 docker compose -f docker-compose.dev.yml up -d
-nodemon -r dotenv/config src/index.js dotenv_config_path=.env.local
+./node_modules/.bin/nodemon -r dotenv/config src/index.js dotenv_config_path=.env.local
 ```
 ## Running tests
 ```bash
