@@ -16,7 +16,7 @@ export default function (err, req, res, next) {
     }
 
     if (err instanceof ModelNotFoundError) {
-        res.sendStatus(404);
+        res.status(404).end();
     } else {
         console.error(err.stack);
         res.status(500).send('Something broke!');

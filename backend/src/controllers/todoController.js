@@ -8,13 +8,18 @@ import {
 /**
  * Get a listing of created Todo objects
  *
- * @param {object} req
- * @param {object} res
+ * @param {object}   req
+ * @param {object}   res
+ * @param {Function} next
  *
  * @returns {Promise<void>}
  */
-export const index = async (req, res) => {
-    res.send({ body: await fetchTodos() });
+export const index = async (req, res, next) => {
+    try {
+        res.send({ body: await fetchTodos() });
+    } catch (e) {
+        return next(e);
+    }
 };
 
 /**
@@ -29,9 +34,9 @@ export const index = async (req, res) => {
 export const create = async (req, res, next) => {
     try {
         const task = await createTodo(req.body);
-        res.location(`/api/${task.id}`).sendStatus(201);
+        res.location(`/api/${task.id}`).status(201).end();
     } catch (e) {
-        next(e);
+        return next(e);
     }
 };
 
@@ -51,7 +56,7 @@ export const update = async (req, res, next) => {
         return next(e);
     }
 
-    res.sendStatus(200);
+    res.status(200).end();
 };
 
 /**
@@ -70,5 +75,5 @@ export const destroy = async (req, res, next) => {
         return next(e);
     }
 
-    res.sendStatus(204);
+    res.status(204).end();
 };
