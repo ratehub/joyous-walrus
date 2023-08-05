@@ -1,6 +1,6 @@
 import ModelNotFoundError from '../errors/ModelNotFoundError.js';
 import { Todo } from '../models/todo.js';
-import throwIfEmpty from './throw-if-empty.js';
+import { throwIfEmpty } from './index.js';
 
 /**
  * Update an existing Todo in the database

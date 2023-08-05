@@ -1,4 +1,4 @@
-import ModelNotFoundError from "../errors/ModelNotFoundError";
+import ModelNotFoundError from '../errors/ModelNotFoundError';
 
 /**
  * Define a custom top-level error handler
@@ -18,6 +18,7 @@ export default function (err, req, res, next) {
     if (err instanceof ModelNotFoundError) {
         res.sendStatus(404);
     } else {
+        console.error(err.stack);
         res.status(500).send('Something broke!');
     }
 }
