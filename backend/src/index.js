@@ -9,11 +9,11 @@ import {
 } from './config/index.js';
 
 let db;
-let heathCheck = false;
+let healthCheck = false;
 
 /* Define a health-check for services that depend on this service */
 app.get('/health-check', (req, res) => {
-    heathCheck ? res.send('OK') : res.status(503).send('Unavailable');
+    healthCheck ? res.send('OK') : res.status(503).send('Unavailable');
 });
 
 /* Start the Express server */
@@ -25,7 +25,7 @@ const server = app.listen(SERVICE_PORT, async () => {
     });
 
     /* Make the health-check available */
-    heathCheck = true;
+    healthCheck = true;
 
     console.info(`HTTP server listening on port ${SERVICE_PORT}`);
 });
@@ -43,7 +43,7 @@ const shutdown = (signal) => {
     }
 
     /* Any polling services will now get a 503 error */
-    heathCheck = false;
+    healthCheck = false;
 
     /* Stop after all I/O is done */
     setImmediate(() => server.close(() => {
