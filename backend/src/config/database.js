@@ -14,4 +14,4 @@ export const DATABASE_USERNAME = process.env.DATABASE_USERNAME;
 export const DATABASE_PASSWORD = process.env.DATABASE_PASSWORD;
 
 /* Define the database connection URI */
-export const DATABASE_CONNECTION_URI = `mongodb://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?authSource=${DATABASE_NAME}`;
+export const DATABASE_CONNECTION_URI = `mongodb://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?authSource=${DATABASE_NAME}`;
