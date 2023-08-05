@@ -6,7 +6,7 @@
     "env:local": "if [ ! -f .env.local ]; then cat .env.example > .env.local; fi",
     "build": "docker compose build --no-cache",
     "serve": "docker compose up",
-    "test": "jest --detectOpenHandles",
+    "test": "LOG_LEVEL=none jest --detectOpenHandles",
     "dev": "npm run dev:up && NODE_ENV=development nodemon -r dotenv/config src/index.js dotenv_config_path=.env.local",
     "dev:up": "npm run env:local && docker compose -f docker-compose.dev.yml up -d",
     "dev:down": "docker compose -f docker-compose.dev.yml down"
