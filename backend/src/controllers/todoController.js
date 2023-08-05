@@ -20,15 +20,19 @@ export const index = async (req, res) => {
 /**
  * Create a new Todo item and return its URI to the client in the Location header
  *
- * @param {object} req
- * @param {object} res
+ * @param {object}   req
+ * @param {object}   res
+ * @param {Function} next
  *
  * @returns {Promise<void>}
  */
-export const create = async (req, res) => {
-    const task = await createTodo(req.body);
-    res.location(`/api/${task.id}`);
-    res.sendStatus(201);
+export const create = async (req, res, next) => {
+    try {
+        const task = await createTodo(req.body);
+        res.location(`/api/${task.id}`).sendStatus(201);
+    } catch (e) {
+        next(e);
+    }
 };
 
 /**
