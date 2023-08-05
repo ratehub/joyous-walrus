@@ -21,3 +21,7 @@ EXPOSE "3001"
 
 # Start the service
 CMD ["node", "src/index.js"]
+
+# Health-check
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD curl http://localhost:3001/health-check || exit 1
