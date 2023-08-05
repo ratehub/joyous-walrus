@@ -10,7 +10,7 @@ COPY src /app/src
 # Copy package.json and package-lock.json to /app
 COPY package* /app/
 
-# Set the wworking directory to /app
+# Set the working directory to /app
 WORKDIR /app
 
 # Install all NPM packages require to run the application
