@@ -1,0 +1,24 @@
+name: API Tests
+
+on:
+  push:
+
+jobs:
+  test:
+    name: Run Jest Tests
+    runs-on: ubuntu:latest
+
+    steps:
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+        
+      - name: Install NPM packages
+        run: cd backend; npm install
+
+      - name: Lint source code
+        run: cd backend; npm run lint
+
+      - name: Run API tests
+        run: cd backend; npm run ci
