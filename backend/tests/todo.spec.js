@@ -111,7 +111,7 @@ describe('PUT /api/:id', () => {
 
          /* 400-Bad Request */
          expect(res.statusCode).toBe(400);
-         // NOTE: this is duplicate code - I find its better to be explicit when testing 
+         // NOTE: this is duplicate code - I've found its better to explicitly define what's being tested 
          expect(res.body.errors[0].path).toBe('id');
          expect(res.body.errors[1].path).toBe('name');
          expect(res.body.errors[2].path).toBe('isComplete');
