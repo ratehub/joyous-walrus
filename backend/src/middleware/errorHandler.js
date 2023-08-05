@@ -1,4 +1,4 @@
-import ModelNotFoundError from '../errors/ModelNotFoundError';
+import ModelNotFoundError from '../errors/ModelNotFoundError.js';
 
 /**
  * Define a custom top-level error handler
