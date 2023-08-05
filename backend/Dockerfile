@@ -1,11 +1,11 @@
-FROM node:18-alpine
+FROM node:18
 
 # Default Node ENV to production
 ARG NODE_ENV=production
 ENV NODE_ENV=$NODE_ENV
 
 # Copy the Node application source code
-COPY src/* /app/
+COPY src /app/src
 
 # Copy package.json and package-lock.json to /app
 COPY package* /app/
@@ -19,8 +19,5 @@ RUN npm install
 # Define service ports to expose by default
 EXPOSE "3001"
 
-# Define volumes to persist between container restarts
-VOLUME ["/app/node_modules"]
-
 # Start the service
-CMD ["node", "index.js"]
+CMD ["node", "src/index.js"]

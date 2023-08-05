@@ -2,9 +2,13 @@
   "type": "module",
   "scripts": {
     "lint": "eslint src",
-    "prepare": "cat .env.example > .env.local",
-    "serve": "docker-compose up -d && nodemon -r dotenv/config src/index.js dotenv_config_path=.env.local",
-    "test": "jest --detectOpenHandles"
+    "lint:fix": "npm run lint -- --fix",
+    "env:local": "cat .env.example > .env.local",
+    "serve": "docker-compose up",
+    "test": "jest --detectOpenHandles",
+    "dev": "npm run dev:up && nodemon -r dotenv/config src/index.js dotenv_config_path=.env.local",
+    "dev:up": "npm run env:local && docker-compose -f docker-compose.dev.yml up -d",
+    "dev:down": "docker-compose -f docker-compose.dev.yml down"
   },
   "dependencies": {
     "express": "^4.18.2",
