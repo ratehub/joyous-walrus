@@ -5,10 +5,7 @@ ARG NODE_ENV=production
 ENV NODE_ENV=$NODE_ENV
 
 # Copy the Node application source code
-COPY src /app/src
-
-# Copy package.json and package-lock.json to /app
-COPY package* /app/
+COPY . /app/
 
 # Set the working directory to /app
 WORKDIR /app
