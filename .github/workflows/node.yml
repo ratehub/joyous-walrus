@@ -1,0 +1,33 @@
+name: API Tests
+
+on:
+  push:
+    paths:
+      - 'backend/**'
+
+jobs:
+  test:
+    name: Run Jest Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout backend source
+        uses: actions/checkout@v3
+        with:
+          sparse-checkout: backend
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install NPM packages
+        run: cd backend; npm ci
+
+      - name: Lint source code
+        run: cd backend; npm run lint
+
+      - name: Run API tests
+        run: cd backend; npm run test -- --forceExit
